@@ -19,7 +19,7 @@ public class ProductController {
 		
 		model.addAttribute("list", productService.listProduct());
 		
-		return "product_list";
+		return "product/product_list";
 	}
 	
 }
