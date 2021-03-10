@@ -35,7 +35,7 @@ $(function(){
 	<c:forEach var="row" items="${list}">
 	<tr align="center">
 		<td>${row.product_id}</td>
-		<td><img src="${path}/images/${row.product_url}" width="100" height="100"/></td>
+		<td><img src="${path}/resources/images/${row.product_url}" width="100" height="100"/></td>
 		<td><a href="${path}/product/detail/${row.product_id}">${row.product_name}</a></td>
 		<td><fmt:formatNumber value="${row.price}" pattern="#,###" /></td>
 	</tr>
