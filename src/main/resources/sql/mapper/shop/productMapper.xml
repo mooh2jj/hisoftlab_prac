@@ -8,5 +8,10 @@
 		select * from product
 		order by product_name
 	</select>
+	
+	<select id="detail_product" resultType="com.example.model.ProductDTO">
+		select * from product
+		where product_id =#{product_id}
+	</select>
 
 </mapper>
