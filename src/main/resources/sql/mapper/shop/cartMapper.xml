@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cart">
+	<insert id="insert">
+		INSERT INTO cart (cart_id, userid, product_id, amount) VALUES (
+		seq_cart.nextval, #{userid}, #{product_id}, #{amount})
+	</insert>
+
+	<select id="listCart" resultType="com.example.model.CartDTO">
+		select cart_id, p.product_id, c.userid, name, 
+		product_name, amount, price, (price*amount) as money
+		from MEMBER m, product p, cart c
+		where 1=1
+		and m.USERID = c.USERID
+		and p.PRODUCT_ID = c.PRODUCT_ID
+		and c.userid = #{userid}
+		order by cart_id
+	</select>
+
+	<select id="sumMoney" resultType="int">
+		select nvl(sum(price*amount), 0)
+		from cart c, product p
+		where 1=1
+		and c.product_id = p.product_id
+		and userid = #{userid}
+	</select>
+	
+	<delete id="delete">
+		delete from cart where cart_id = #{cart_id}
+	</delete>
+	
+	<delete id="deleteAll">
+		delete from cart where userid = #{userid}
+	</delete>
+	
+	<update id="modifyCart">
+		update cart set amount=#{amount}
+		where cart_id = #{cart_id}
+	</update>
+</mapper>

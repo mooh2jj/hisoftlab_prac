@@ -6,6 +6,7 @@
 <a href="${path}">Home</a> |
 <a href="${path}/upload/uploadForm">업로드 테스트</a> |
 <a href="${path}/product/list.do">상품목록</a> |
+<a href="${path}/cart/list.do">장바구니</a> 
 
 
 <div style="text-align: right;">

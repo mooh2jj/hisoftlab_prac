@@ -47,6 +47,7 @@ public class MemberController {
 	
 	@RequestMapping("logout.do")
 	public String logout(Model model, HttpSession session) {
+		
 		logger.info("logout.do start...");
 		memberService.logout(session);
 		model.addAttribute("message", "logout");
