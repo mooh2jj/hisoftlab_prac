@@ -21,6 +21,7 @@ $(function(){
 </script>
 </head>
 <body>
+<%@ include file="../include/menu.jsp" %>
 <h2>상품등록</h2>
 <c:if test="${sessionScope.admin != null }">
 	<button type="button" id="btnAdd">상품등록</button>
