@@ -13,5 +13,10 @@
 		select * from product
 		where product_id =#{product_id}
 	</select>
+	
+	<insert id="insert">
+		insert into PRODUCT VALUES
+		(SEQ_PRODUCT.NEXTVAL, #{product_name}, #{price}, #{description}, #{product_url})
+	</insert>
 
 </mapper>
