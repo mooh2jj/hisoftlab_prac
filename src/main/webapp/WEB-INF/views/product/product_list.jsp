@@ -13,7 +13,7 @@
 	
 $(function(){
 	
-	$("btnAdd").click(function(){
+	$("#btnAdd").click(function(){
 		location.href = "${path}/product/write.do";
 	});
 });
@@ -23,7 +23,7 @@ $(function(){
 <body>
 <%@ include file="../include/menu.jsp" %>
 <h2>상품등록</h2>
-<c:if test="${sessionScope.admin != null }">
+<c:if test="${sessionScope.admin_userid != null }">
 	<button type="button" id="btnAdd">상품등록</button>
 </c:if>
 <table border="1">
@@ -37,7 +37,13 @@ $(function(){
 	<tr align="center">
 		<td>${row.product_id}</td>
 		<td><img src="${path}/resources/images/${row.product_url}" width="100" height="100"/></td>
-		<td><a href="${path}/product/detail/${row.product_id}">${row.product_name}</a></td>
+		<td><a href="${path}/product/detail/${row.product_id}">${row.product_name}</a>
+			<!-- 관리자만 편집 버튼 표시 -->
+			<c:if test="${sessionScope.admin_userid != null }">
+			<br>
+			<a href="${path}/product/edit/${row.product_id}">[편집]</a>
+			</c:if>
+		</td>
 		<td><fmt:formatNumber value="${row.price}" pattern="#,###" /></td>
 	</tr>
 	</c:forEach>

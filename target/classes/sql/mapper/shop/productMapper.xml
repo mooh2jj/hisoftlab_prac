@@ -18,5 +18,23 @@
 		insert into PRODUCT VALUES
 		(SEQ_PRODUCT.NEXTVAL, #{product_name}, #{price}, #{description}, #{product_url})
 	</insert>
-
+	
+	<update id="update">
+		update product
+		set product_name = #{product_name},
+		price = #{price},
+		description = #{description},
+		product_url = #{product_url}
+		where product_id = #{product_id}
+	</update>
+	
+	<delete id="delete">
+		delete from product
+		where product_id = #{product_id}
+	</delete>
+	
+	<select id="file_info" resultType="String">
+		select product_url from product
+		where product_id = #{product_id}
+	</select>
 </mapper>
