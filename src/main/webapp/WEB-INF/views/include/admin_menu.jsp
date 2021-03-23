@@ -6,6 +6,7 @@
 <a href="${path}/">Home</a> |
 <a href="${path}/product/list.do">상품목록</a> |
 <a href="${path}/product/write.do">상품등록</a> |
+<a href="${path}/pdf/list.do">PDF</a> |
 
 
 <div style="text-align: right;">
