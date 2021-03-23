@@ -29,11 +29,11 @@ function product_write() {
 		return;
 	}
 	
-	if(description == ""){
+/* 	if(description == ""){
 		alert("상품설명을 입력하세요.");
 		document.form1.description.focus();
 		return;
-	}
+	} */
 	
 	document.form1.action = "${path}/product/insert.do";
 	document.form1.submit();
@@ -57,8 +57,15 @@ function product_write() {
 		<tr>
 			<td>상품설명</td>
 			<td><textarea rows="5" cols="60"
-					name="description" id="description"></textarea></td>
+					name="description" id="description" placeholder="상품설명을 입력하세요."></textarea></td>
+					<!-- textarea를 스마트에디터로 변경 -->
 		</tr>
+		<script>
+		// id description인 태그에 ckeditor 적용
+			CKEDITOR.replace("description", {
+				filebrowserUploadUrl: "${path}/imageUpload.do"
+			});
+		</script>
 		<tr>
 			<td>상품이미지</td>
 			<td><input type="file" name="file1"></td>
