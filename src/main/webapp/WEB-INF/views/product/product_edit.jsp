@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="${path}/resources/js/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
 	function product_update(){
 		document.form1.action = "${path}/product/update.do";
@@ -39,6 +40,12 @@
 			<td><textarea rows="5" cols="60" name="description" 
 			id="description">${dto.description}</textarea></td>
 		</tr>
+		<script>
+		// id description인 태그에 ckeditor 적용
+		CKEDITOR.replace("description", {
+			filebrowserUploadUrl: "${path}/imageUpload.do"
+		});
+		</script>
 		<tr>
 			<td>상품 이미지</td>
 			<td>

@@ -9,7 +9,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-2.2.1.min.js"></script>
-<script src="${path}/ckeditor/ckeditor.js"></script>
+<script src="${path}/resources/js/ckeditor/ckeditor.js"></script>
+<c:if test="${sessionScope.admin_userid == null }">
+	<script type="text/javascript">
+		alert("로그인 하신 후 사용하세요.");
+		location.href = "${path}/admin/login.do";
+	</script>
+</c:if>
 <script type="text/javascript">
 	
 function product_write() {
