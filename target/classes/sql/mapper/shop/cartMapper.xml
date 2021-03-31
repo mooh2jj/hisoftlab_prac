@@ -10,7 +10,7 @@
 	</insert>
 
 	<select id="listCart" resultType="com.example.model.CartDTO">
-		select cart_id, p.product_id, c.userid, name, 
+		select cart_id, p.product_id, c.userid, name,
 		product_name, amount, price, (price*amount) as money
 		from MEMBER m, product p, cart c
 		where 1=1
@@ -27,17 +27,26 @@
 		and c.product_id = p.product_id
 		and userid = #{userid}
 	</select>
-	
+
 	<delete id="delete">
 		delete from cart where cart_id = #{cart_id}
 	</delete>
-	
+
 	<delete id="deleteAll">
 		delete from cart where userid = #{userid}
 	</delete>
-	
+
 	<update id="modifyCart">
 		update cart set amount=#{amount}
 		where cart_id = #{cart_id}
 	</update>
+
+	<select id="cart_money" resultType="com.example.model.CartDTO">
+		select p.PRODUCT_NAME, sum(price * amount) money
+		from CART c, PRODUCT p
+		where c.product_id = p.product_id
+		GROUP BY p.PRODUCT_NAME
+		order by p.PRODUCT_NAME
+		
+	</select>
 </mapper>
